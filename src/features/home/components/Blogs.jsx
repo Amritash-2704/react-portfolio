@@ -26,7 +26,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="min-h-screen pt-32 bg-[#0f172a] text-white"
+      className="min-h-screen  pt-32 bg-[#0f172a] text-white"
     >
       <div className="max-w-6xl mx-auto px-6">
 

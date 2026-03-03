@@ -24,12 +24,13 @@ export default function Projects() {
       github: "#",
       live: "#",
     },
+    
   ];
 
   return (
     <section
       id="projects"
-      className="min-h-screen pt-32 bg-[#0f172a] text-white"
+      className="h-screen overflow-y-auto pt-24 pb-24 bg-[#0f172a] text-white"
     >
       <div className="max-w-6xl mx-auto px-6">
 
