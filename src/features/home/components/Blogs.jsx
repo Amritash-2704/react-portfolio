@@ -63,7 +63,7 @@ export default function Blogs() {
               </p>
 
               <a
-                href={blog.link}
+                // href={blog.link}
                 className="text-sm text-gray-400 hover:text-cyan-400 transition"
               >
                 Read More →
