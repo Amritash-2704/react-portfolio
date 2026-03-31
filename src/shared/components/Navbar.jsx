@@ -1,38 +1,22 @@
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Projects", id: "projects" },
-    { name: "Blogs", id: "blogs" },
-    { name: "Resume", id: "resume" },
-    { name: "Email", id: "email" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Blogs", path: "/blogs" },
+    { name: "Resume", path: "/resume" },
+    { name: "Email", path: "/email" },
   ];
-
-  const handleScroll = (id) => {
-    const section = document.getElementById(id);
-
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-
-      if (id === "home") {
-        window.history.pushState(null, "", "/");
-      } else {
-        window.history.pushState(null, "", `/${id}`);
-      }
-    }
-
-    setMenuOpen(false);
-  };
 
   return (
     <nav className="fixed w-full top-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-gray-800">
-
+      
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* Logo */}
@@ -43,13 +27,13 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 text-gray-300">
           {links.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => handleScroll(item.id)}
+            <li key={item.path}>
+              <Link
+                to={item.path}
                 className="hover:text-cyan-400 transition duration-300"
               >
                 {item.name}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -71,23 +55,22 @@ export default function Navbar() {
         >
           ☰
         </button>
-
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#0f172a] border-t border-gray-800">
-
           <ul className="flex flex-col items-center space-y-6 py-6 text-gray-300">
-
+            
             {links.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleScroll(item.id)}
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  onClick={() => setMenuOpen(false)}
                   className="hover:text-cyan-400 transition duration-300"
                 >
                   {item.name}
-                </button>
+                </Link>
               </li>
             ))}
 
@@ -99,12 +82,9 @@ export default function Navbar() {
             >
               <FaGithub />
             </a>
-
           </ul>
-
         </div>
       )}
-
     </nav>
   );
 }
